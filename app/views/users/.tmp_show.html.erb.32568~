@@ -1,0 +1,28 @@
+<p>hnsdhsh</p>
+<p>
+  <strong>Username:</strong>
+  <%= @user.username %><br>
+<p>
+  <h2>Albums</h2>
+  <table>
+  <% @user.albums.each do|album| %>
+    <tr>
+    <td><%= album.name %></td>
+    <td><%= link_to 'show',album_path(album) %></td>
+    </tr>
+	
+  <% end %>
+  </table>
+ 
+  <h2>Add new album:</h2>
+    <%= form_for([@user,@user.albums.build]) do |f| %>
+      <p>
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
+      </p>
+      <p>
+        <%= f.submit %>
+      </p>
+    <% end %>
+	 <%= link_to 'New album', new_user_album_path(@user) %>
+  

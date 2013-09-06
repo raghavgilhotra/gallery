@@ -1,0 +1,20 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<nav class="navbar navbar-fluid-top" role="navigation">
+		<div class="navbar-inner">
+			<div class="container">
+				<%= link_to "Album gallery", users_path , class: "brand"%>
+          <div class="navbar-header pull-right" >
+  
+  	<% if visitor_signed_in? %>
+    Signed in as <%= current_visitor.email %>. Not you?
+    <%= link_to "Sign out", destroy_visitor_session_path, :method => :delete, class: "btn btn-danger"	 %>
+	
+  <% else %>
+    <%= link_to "Sign up", new_visitor_registration_path , class: "btn btn-primary"%> or <%= link_to "Sign in", new_visitor_session_path , class: "btn btn-primary"%>
+  <% end %>
+  <div>
+ </div>
+</div>
+</nav>
+</html>

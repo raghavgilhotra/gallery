@@ -1,0 +1,12 @@
+<%= link_to 'New user', new_user_path, class: "btn btn-primary" %>
+<div align="center">
+<h1>Listing users</h1>
+<table>
+  <% @users.each do |user| %>
+    <tr>
+      <th><%= user.username %></th>
+      <th><%= link_to 'Show', user_path(user), class: "btn btn-primary" %></th>
+    <tr>
+  <% end %>
+</table>
+</div>

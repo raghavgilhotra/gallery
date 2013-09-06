@@ -1,0 +1,7 @@
+<table>
+<% @photos.each do |photo| %>
+  <tr>
+          <td><%= image_tag photo.avatar.url(:thumb) %>
+  </tr>  
+<% end %>
+</table>

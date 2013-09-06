@@ -1,0 +1,12 @@
+
+
+<%= form_for :photo, url: album_path(@album) do |f| %>
+  <p>
+   <p><%= f.file_field :avatar  %></p>
+  </p>
+  <%= f.fields_for :tags do |builder| %>
+    <%= render "tags_fields", :f => builder %>
+  <% end %>
+  <p><%= f.submit "Submit" %></p>
+<% end %>
+

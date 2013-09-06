@@ -1,0 +1,17 @@
+<div align="center">
+<%= image_tag @photo.avatar.url(:large) %><br>
+<%= @photo.tags.any? %>
+        <% @photo.tags.each do |tag| %>
+        <%= link_to tag.name, tagged_url(:tag => tag.name) %>
+        <% end %>
+ <%= form_for([@photo,@photo.tags.build]) do |f| %>
+      <h3>Add tag</h3>
+	  <p>
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
+      </p>
+      <p>
+        <%= f.submit %>
+      </p>
+    <% end %>
+	</div>

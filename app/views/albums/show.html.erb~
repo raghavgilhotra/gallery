@@ -1,0 +1,20 @@
+<p>
+  <strong>Album:</strong>
+  <%= @album.name %></br>
+</p>
+ 
+<h2>Albums</h2>
+  <table>
+  <% @album.photos.each do |photo| %>
+    
+    <tr>
+    <td><%= image_tag photo.avatar.url(:thumb) %></td>
+    <td><%= link_to 'show',photo_path(photo) %></td>
+    </tr>
+  <% end %>
+  </table>
+<h2>Add more photos</h2>
+  <%= form_for [@album,@album.photos.build], :html => { :multipart => true } do |f| %>
+    <p><%= f.file_field :avatar  %></p>
+    <p><%= f.submit %></p>
+  <% end %>

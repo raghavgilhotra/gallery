@@ -1,0 +1,40 @@
+<div align="center">
+<h2>
+  
+  <strong><%= @album.name %>
+  <%= "'s photos" %></strong></br>
+</h2>
+ 
+<div class="container" style="background-color:#e6e6fa;">
+	<div class="row">
+  <% @album.photos.each do |photo| %>
+  
+  <div class="span4" style="height:200px; background-color:#e5e5e5">
+   <table>
+    <tr>
+    <td><%= link_to((image_tag photo.avatar.url(:thumb)),photo_path(photo)) %></td>
+	
+    <td><%= link_to 'show',photo_path(photo) %></td>
+	</tr>
+	<tr>
+		<td>
+    <% photo.tags.any? %>
+        <% photo.tags.each do |tag| %>
+        <%= link_to tag.name, tagged_url(:tag => tag.name) %>
+        <% end %>
+        </td>
+    </tr>
+	</table>
+	</div>
+  
+  <% end %>
+  
+  </div>
+  </div>
+  </div>
+  
+<h2>Add more photos</h2>
+  <%= form_for [@album,@album.photos.build], :html => { :multipart => true } do |f| %>
+    <p><%= f.file_field :avatar  %></p>
+    <p><%= f.submit %></p>
+  <% end %>
